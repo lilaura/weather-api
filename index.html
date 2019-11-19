@@ -52,7 +52,7 @@
 			$("#temp").html(json.main.temp);
 			$("#high").html(json.main.temp_max);
 			$("#low").html(json.main.temp_min);
-			$("#tempImg").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+			$("#tempImg").attr("src", "https://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
 			$("#tempImg").attr("title", json.weather[0].main);
     })
     }
