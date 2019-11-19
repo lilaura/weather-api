@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Weather</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Don't forget to link to jQuery -->
 <style>
 	input{
@@ -9,7 +10,7 @@
 		padding: 5px;
 	}
 	#forecast{
-		/*This div should not appear until the weather is returned.*/
+		display: none;/*This div should not appear until the weather is returned.*/
 	}
 	#forecast div{
 		width: 25vw;
@@ -21,7 +22,7 @@
 		width:100%;
 	}
 </style>
-<script>
+<script> 
     function gettingJSON(){
     	console.log("Hi")
     	// Use the OpenWeather API to return:
@@ -29,17 +30,23 @@
     	//  the high temperature for the day
     	//  the low temperature for the day
     	//  the icon for the current weather.
+		
 
 
-
-    	// You will need to update this query with the city, weather format (Celsius or Fahrenheit) and your OpenWeatherMap ID
-    	 
-    	// Right now I have it set to Chicago.  The default should be Ann Abor/Fahreheit.
-		let query = "http://api.openweathermap.org/data/2.5/weather?q=Chicago&APPID=" +YourWeatherAppID;
+   	 
+    	// The default should be Ann Abor/Fahreheit.
+		let query = "http://api.openweathermap.org/data/2.5/weather?id=4984247&units=imperial&APPID=f0c063258d8daef456abe13435b8ebcf";
         console.log("Query is :" + query)
 
         $.getJSON(query,function(json){
             console.log(JSON.stringify(json));
+			$('#forecast').css("display", "block");
+			$("#loc").html(json.name);
+			$("#temp").html(json.main.temp);
+			$("#high").html(json.main.temp_max);
+			$("#low").html(json.main.temp_min);
+			$("#tempImg").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+			$("#tempImg").attr("title", json.weather[0].main);
     })
     }
     </script>
