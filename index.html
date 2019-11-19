@@ -42,7 +42,7 @@
 		if ($("#location").val()) {
 			city = $("#location").val();
 		}
-        var query = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + unit + "&APPID=f0c063258d8daef456abe13435b8ebcf";
+        var query = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=" + unit + "&APPID=f0c063258d8daef456abe13435b8ebcf";
 		console.log("Query is :" + query)
 
         $.getJSON(query,function(json){
